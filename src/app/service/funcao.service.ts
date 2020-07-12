@@ -7,7 +7,7 @@ import { Funcao } from '../models/funcao.interdace';
 })
 export class FuncaoService {
 
-  private URI = 'http://localhost:3000/funcao';
+  private URI = 'http://localhost:8080/pet-Back/resources/funcoes';
 
   constructor(
     private httpCliente : HttpClient
