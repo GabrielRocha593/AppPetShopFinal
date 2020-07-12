@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro de Funcionario</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--formulario-->
+  <form #funcionarioForm="ngForm">
+
+    <!--item 01-->
+    <ion-item>
+      <ion-label position="floating">Nome *:</ion-label>
+      <ion-input type="text" name="nome" [(ngModel)]="funcionario.nome"  pattern="[a-zA-Z ]+" minlength="5" maxlength="50" #Nome="ngModel" required></ion-input>
+      <ion-text color="danger" *ngIf="Nome.invalid && (Nome.dirty || Nome.touched)">
+        <small>
+          <span *ngIf="Nome.errors.required">
+            O nome é obrigatório
+          </span>
+          <span *ngIf="Nome.errors.minlength">
+            O campo nome deve ter no mínimo 5 caracteres
+          </span>
+          <span *ngIf="Nome.errors.pattern">
+            O campo nome deve conter apenas letras
+          </span>
+        </small>
+      </ion-text>
+    </ion-item>
+
+    <!--item 02-->
+    <ion-item>
+      <ion-label position="floating">Endereço *:</ion-label>
+      <ion-input type="text" name="endereco" [(ngModel)]="funcionario.endereco"   minlength="5" maxlength="70" #Endereco="ngModel" required ></ion-input><!--pattern="[a-zA-Z ]+"--> 
+      <ion-text color="danger" *ngIf="Endereco.invalid && (Endereco.dirty || Endereco.touched)">
+        <small>
+          <span *ngIf="Endereco.errors.required">
+            O Endereço é obrigatório
+          </span>
+          <span *ngIf="Endereco.errors.minlength">
+            O campo Endereço deve ter no mínimo 5 caracteres
+          </span>
+          <span *ngIf="Endereco.errors.pattern">
+            O campo nome deve conter apenas letras
+          </span>
+        </small>
+      </ion-text>
+    </ion-item>
+
+    <!--item 03-->
+    <ion-item>
+      <ion-label position="floating">CPF *:</ion-label>
+      <ion-input type="text" name="cpf" [(ngModel)]="funcionario.cpf" #cpf="ngModel" maxlength="11" pattern="[0-9]{11}" required></ion-input><!--pattern="[a-zA-Z ]+"--> 
+      <ion-text color="danger" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
+        <small>
+          <span *ngIf="cpf.errors.required">
+            O CPF é obrigatório
+          </span>
+          <span *ngIf="cpf.errors.pattern">
+            O campo CPF deve ter 11 caracteres numericos!
+          </span>
+        </small>
+      </ion-text>
+    </ion-item>
+
+    <!--item 04-->
+    <ion-item>
+      <ion-label position="floating">Telefone *:</ion-label>
+      <ion-input type="text" name="telefone" [(ngModel)]="funcionario.telefone" #telefone="ngModel" maxlength="11" pattern="[0-9]{11}" required></ion-input><!--pattern="[a-zA-Z ]+"--> 
+      <ion-text color="danger" *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)">
+        <small>
+          <span *ngIf="telefone.errors.required">
+            O telefone é obrigatório
+          </span>
+          <span *ngIf="telefone.errors.pattern">
+            O campo telefone deve ter 11 caracteres numericos!
+          </span>
+        </small>
+      </ion-text>
+    </ion-item>
+
+    <!--item 05-->
+    <ion-item>
+      <ion-label position="stacked">Data de Contratação *: </ion-label>
+      <ion-input type="date" [(ngModel)]="funcionario.dataContratacao" name="lancamento" required></ion-input>
+    </ion-item>
+
+    <!--item 06-->
+    <ion-item>
+      <ion-label>Função:</ion-label>
+      <ion-select [(ngModel)]="funcionario.funcao" multiple="false" placeholder="Selecione os função"
+        [compareWith]="compareWith" name="funcao" >
+        <ion-select-option *ngFor="let funcao of funcoes" [value]="funcao">{{funcao.nome}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+  <ion-fab vertical="bottom" horizontal="end" >
+    <ion-fab-button (click)="salvar()"  [disabled]="funcionarioForm.invalid">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+  </form>
+</ion-content>

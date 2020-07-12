@@ -1,0 +1,166 @@
+{
+  "pets": [
+    {
+      "id": 1,
+      "nome": "rex",
+      "descricao": "cachorro",
+      "cliente": {
+        "id": 1,
+        "nome": "Gabriel Salomão",
+        "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+        "cpf": "81246727099",
+        "telefone": "47827272070"
+      }
+    },
+    {
+      "id": 2,
+      "nome": "thor",
+      "descricao": "gato",
+      "cliente": {
+        "id": 2,
+        "nome": "Isadora Silva",
+        "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+        "cpf": "81246727099",
+        "telefone": "47827272070"
+      }
+    },
+    {
+      "id": 3,
+      "nome": "Lúcifer",
+      "descricao": "gato",
+      "cliente": {
+        "id": 2,
+        "nome": "Isadora Silva",
+        "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+        "cpf": "81246727099",
+        "telefone": "47827272070"
+      }
+    },
+    {
+      "nome": "Belinha",
+      "descricao": "Cachorra",
+      "cliente": {
+        "id": 1,
+        "nome": "Gabriel Salomão",
+        "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+        "cpf": "81246727099",
+        "telefone": "47827272070"
+      },
+      "id": 4
+    }
+  ],
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Gabriel Salomão",
+      "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+      "cpf": "81246727099",
+      "telefone": "47827272070"
+    },
+    {
+      "id": 2,
+      "nome": "Isadora Silva",
+      "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+      "cpf": "81246727099",
+      "telefone": "47827272070"
+    }
+  ],
+  "funcionario": [
+    {
+      "id": 1,
+      "nome": "Ricardo",
+      "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+      "cpf": "81246727099",
+      "telefone": "47827272070",
+      "dataContratacao": "2018-10-20",
+      "funcao": {
+        "id": 1,
+        "nome": "veterinário",
+        "salario": "1200.00"
+      }
+    },
+    {
+      "id": 2,
+      "nome": "Jozé",
+      "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+      "cpf": "81246727099",
+      "telefone": "47827272070",
+      "dataContratacao": "2015-10-20",
+      "funcao": {
+        "id": 2,
+        "nome": "Gerente",
+        "salario": "2000.00"
+      }
+    }
+  ],
+  "funcao": [
+    {
+      "id": 1,
+      "nome": "veterinário",
+      "salario": "1200.00"
+    },
+    {
+      "id": 2,
+      "nome": "Gerente",
+      "salario": "2000.00"
+    }
+  ],
+  "servicos": [
+    {
+      "id": 1,
+      "nome": "Banho",
+      "valor": "50.00"
+    },
+    {
+      "nome": "Tosar",
+      "valor": 60.5,
+      "id": 2
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": 1,
+      "data": "2020-05-01",
+      "status": "Em andamento",
+      "pet": {
+        "id": 2,
+        "nome": "thor",
+        "descricao": "gato",
+        "cliente": {
+          "id": 2,
+          "nome": "Isadora Silva",
+          "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+          "cpf": "81246727099",
+          "telefone": "47827272070"
+        }
+      },
+      "servico": {
+        "nome": "Tosar",
+        "valor": 60.5,
+        "id": 2
+      }
+    },
+    {
+      "data": "2020-05-17",
+      "status": "Aberto",
+      "pet": {
+        "nome": "Belinha",
+        "descricao": "Cachorra",
+        "cliente": {
+          "id": 1,
+          "nome": "Gabriel Salomão",
+          "endereco": "Rua Luiz Mendes, 862-922 - Pres. Vargas, Içara - SC",
+          "cpf": "81246727099",
+          "telefone": "47827272070"
+        },
+        "id": 4
+      },
+      "servico": {
+        "id": 1,
+        "nome": "Banho",
+        "valor": "50.00"
+      },
+      "id": 2
+    }
+  ]
+}

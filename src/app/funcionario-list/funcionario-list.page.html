@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Funcionários</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--Lista de funcionarios-->
+  <ion-list>
+    <ion-item *ngFor="let funcionario of funcionarios">
+      <ion-label>
+        <h2>{{funcionario.nome}}</h2>
+        <h4>Telefone: {{funcionario.telefone}}</h4>
+        <h4>Função: {{funcionario.funcao.nome}}</h4>
+      </ion-label>
+      <ion-icon color="primary" name="create" slot="end" [routerLink]="['/funcionario-list/cadastro', funcionario.id]"></ion-icon>
+      <ion-icon color="primary" name="trash" slot="end" (click)="confirmarExclusao(funcionario)"></ion-icon>
+    </ion-item>
+  </ion-list>
+<!--fab-button-->
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button [routerLink] = " ['/funcionario-list', 'cadastro']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

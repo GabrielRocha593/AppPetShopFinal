@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Menu
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--Quando terminar as telas, incluidas na lista-->
+
+<ion-content>
+  <!--Lista de Opções-->
+  <ion-list>
+
+    <ion-item [routerLink]="['/cliente-list']" >
+      <ion-label>Clientes</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/pet-list']" >
+      <ion-label>Pets</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/funcionario-list']">
+      <ion-label>Funcionarios</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/servico-list']" >
+      <ion-label>Serviços</ion-label>
+    </ion-item>
+
+    <ion-item [routerLink]="['/agendamento-list']" >
+      <ion-label>Lista de Agendamentos</ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

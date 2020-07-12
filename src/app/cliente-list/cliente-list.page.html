@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Clientes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--Lista de Clientes-->
+  <ion-list>
+    <ion-item *ngFor="let cliente of clientes">
+      <ion-label>
+        <h2>{{cliente.nome}}</h2>
+        <h4>CPF: {{cliente.cpf}}</h4>
+      </ion-label>
+      <ion-icon color="primary" name="create" slot="end" [routerLink]="['/cliente-list/cadastro',cliente.id]"></ion-icon>
+      <ion-icon color="primary" name="trash" slot="end" (click)="confirmarExclusao(cliente)"></ion-icon>
+    </ion-item>
+  </ion-list>
+<!--fab-button-->
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button [routerLink] = " ['/cliente-list', 'cadastro'] ">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

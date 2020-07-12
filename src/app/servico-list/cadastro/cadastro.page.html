@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro de Serviços</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--formulario-->
+  <form #servicoForm="ngForm">
+
+  <!--item 01-->
+  <ion-item>
+
+    <ion-label position="floating">Nome *:</ion-label>
+
+    <ion-input type="text" name="nome" [(ngModel)]="servico.nome"  pattern="[a-zA-Z ]+" minlength="5" maxlength="50" #Nome="ngModel" required></ion-input>
+
+    <ion-text color="danger" *ngIf="Nome.invalid && (Nome.dirty || Nome.touched)">
+
+      <small>
+        <span *ngIf="Nome.errors.required">
+          O nome é obrigatório
+        </span>
+
+        <span *ngIf="Nome.errors.minlength">
+          O campo nome deve ter no mínimo 5 caracteres
+        </span>
+
+        <span *ngIf="Nome.errors.pattern">
+          O campo nome deve conter apenas letras
+        </span>
+      </small>
+      
+    </ion-text>
+  </ion-item>
+  <!--item 02-->
+  <ion-item>
+
+    <ion-label position="floating">Valor *:</ion-label>
+
+    <ion-input type="number" name="Valor" [(ngModel)]="servico.valor"   #Valor="ngModel" required></ion-input>
+
+    <ion-text color="danger" *ngIf="Valor.invalid && (Valor.dirty || Valor.touched)">
+
+      <small>
+        <span *ngIf="Valor.errors.required">
+          O Valor é obrigatório
+        </span>
+        
+      </small>
+      
+    </ion-text>
+  </ion-item>
+  
+
+  <!--fab-button-->
+  <ion-fab vertical="bottom" horizontal="end" >
+    <ion-fab-button (click)="salvar()"  [disabled]="servicoForm.invalid">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</form>
+</ion-content>

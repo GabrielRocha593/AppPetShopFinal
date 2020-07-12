@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro de Pets</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--formulario-->
+  <form #funcionarioForm="ngForm">
+
+  <!--item 01-->
+  <ion-item>
+
+    <ion-label position="floating">Nome *:</ion-label>
+
+    <ion-input type="text" name="nome" [(ngModel)]="pet.nome"  pattern="[a-zA-Z ]+" minlength="5" maxlength="50" #Nome="ngModel" required></ion-input>
+
+    <ion-text color="danger" *ngIf="Nome.invalid && (Nome.dirty || Nome.touched)">
+
+      <small>
+        <span *ngIf="Nome.errors.required">
+          O nome é obrigatório
+        </span>
+
+        <span *ngIf="Nome.errors.minlength">
+          O campo nome deve ter no mínimo 5 caracteres
+        </span>
+
+        <span *ngIf="Nome.errors.pattern">
+          O campo nome deve conter apenas letras
+        </span>
+      </small>
+      
+    </ion-text>
+  </ion-item>
+
+  <!--item 02-->
+  <ion-item>
+
+    <ion-label position="floating">Descricao *:</ion-label>
+
+    <ion-input type="text" name="descricao" [(ngModel)]="pet.descricao"  pattern="[a-zA-Z ]+" minlength="5" maxlength="50" #descricao="ngModel" required></ion-input>
+
+    <ion-text color="danger" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+
+      <small>
+        <span *ngIf="descricao.errors.required">
+          O descricao é obrigatório
+        </span>
+
+        <span *ngIf="descricao.errors.minlength">
+          O campo descricao deve ter no mínimo 5 caracteres
+        </span>
+
+        <span *ngIf="descricao.errors.pattern">
+          O campo descricao deve conter apenas letras
+        </span>
+      </small>
+
+    </ion-text>
+  </ion-item>
+
+  <!--item 03-->
+  <ion-item>
+    <ion-label>Responsável:</ion-label>
+
+    <ion-select [(ngModel)]="pet.cliente" multiple="false" placeholder="Selecione o cliente" [compareWith]="compareWith" name="cliente" >
+
+      <ion-select-option  *ngFor="let cliente of clientes" [value]="cliente">{{cliente.nome}}</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+  <!--fab-button-->
+  <ion-fab vertical="bottom" horizontal="end" >
+    <ion-fab-button (click)="salvar()"  [disabled]="funcionarioForm.invalid">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</form>
+</ion-content>

@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro de Agendamentos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--formulario-->
+  <form #agendamentoForm="ngForm">
+
+  <!--item 01-->
+  <ion-item>
+
+    <ion-label position="floating">Data *:</ion-label>
+
+    <ion-input type="Date" name="data" [(ngModel)]="agendamento.data"  #Data="ngModel" required></ion-input>
+
+    <ion-text color="danger" *ngIf="Data.invalid && (Data.dirty || Data.touched)">
+
+      <small>
+        <span *ngIf="Data.errors.required">
+          O campo Data é obrigatório
+        </span>
+      </small>
+      
+    </ion-text>
+  </ion-item>
+
+
+  <!--item 02-->
+  <ion-item>
+    <ion-label>Status *:</ion-label>
+
+    <ion-select [(ngModel)]="agendamento.status" multiple="false" placeholder="Selecione o status"  name="status" required>
+
+      <ion-select-option  value="Aberto">Aberto</ion-select-option>
+      <ion-select-option  value="Em andamento">Em andamento</ion-select-option>
+      <ion-select-option  value="Finalizado">Finalizado</ion-select-option>
+    </ion-select>
+  </ion-item>
+   <!--item 03-->
+   <ion-item>
+    <ion-label>Pet:</ion-label>
+
+    <ion-select [(ngModel)]="agendamento.pet" multiple="false" placeholder="Selecione um pet" [compareWith]="compareWith" name="pet" required>
+
+      <ion-select-option  *ngFor="let pet of pets" [value]="pet">{{pet.nome}}</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+   <!--item 04-->
+   <ion-item>
+    <ion-label>Serviço:</ion-label>
+
+    <ion-select [(ngModel)]="agendamento.servico" multiple="false" placeholder="Selecione um Serviço" [compareWith]="compareWith" name="servico" required>
+
+      <ion-select-option  *ngFor="let servico of servicos" [value]="servico">{{servico.nome}}</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+
+ <!--item 05-->
+ <ion-item>
+  <ion-label>Funcionario:</ion-label>
+
+  <ion-select [(ngModel)]="agendamento.funcionario" multiple="false" placeholder="Selecione o funcionario" [compareWith]="compareWith" name="funcionario" >
+
+    <ion-select-option  *ngFor="let funcionario of funcionarios" [value]="funcionario">{{funcionario.nome}}</ion-select-option>
+
+  </ion-select>
+</ion-item>
+
+  <!--fab-button-->
+  <ion-fab vertical="bottom" horizontal="end" >
+    <ion-fab-button (click)="salvar()"  [disabled]="agendamentoForm.invalid">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</form>
+</ion-content>
