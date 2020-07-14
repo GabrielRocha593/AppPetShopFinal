@@ -89,9 +89,16 @@ export class CadastroPage implements OnInit {
 
     if(id) {
       this.agendamentoService.getAgendamento(id).subscribe((agendamento) => {
-        
         this.agendamento = agendamento;
         this.agendamento.data = new Date(this.agendamento.data);
+        
+        var data = new Date(this.agendamento.data),
+        dia  = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0'+dia : dia,
+        mes  = (data.getMonth()+1).toString(),
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
+        this.data = anoF+"-"+mesF+"-"+diaF;
 
       });
     } 
@@ -121,6 +128,11 @@ export class CadastroPage implements OnInit {
 
     loading.present();
 
+    
+  var arrDataExclusao = this.data.split('-');
+  var stringFormatada = arrDataExclusao[0] + '-' + arrDataExclusao[1] + '-' + (parseInt(arrDataExclusao[2]) + 1);
+  var dataFormatada = new Date(stringFormatada); 
+  this.agendamento.data = dataFormatada;
 
     this.agendamentoService
     .salvar(this.agendamento)

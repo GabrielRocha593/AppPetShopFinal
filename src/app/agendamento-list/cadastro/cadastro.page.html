@@ -16,7 +16,7 @@
 
     <ion-label position="floating">Data *:</ion-label>
 
-    <ion-input type="Date" name="data" [(ngModel)]="agendamento.data" #Data="ngModel" required></ion-input>
+    <ion-input type="Date" name="data" [(ngModel)]="data" #Data="ngModel" required></ion-input>
 
     <ion-text color="danger" *ngIf="Data.invalid && (Data.dirty || Data.touched)">
 
