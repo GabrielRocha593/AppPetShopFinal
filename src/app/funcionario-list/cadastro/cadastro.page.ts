@@ -64,14 +64,7 @@ export class CadastroPage implements OnInit {
       this.funcionarioService.getFuncionario(id).subscribe((funcionario) => {
         
         this.funcionario = funcionario;
-        
-        var data = new Date(this.funcionario.dataContratacao),
-        dia  = data.getDate().toString(),
-        diaF = (dia.length == 1) ? '0'+dia : dia,
-        mes  = (data.getMonth()+1).toString(),
-        mesF = (mes.length == 1) ? '0'+mes : mes,
-        anoF = data.getFullYear();
-        this.data = anoF+"-"+mesF+"-"+diaF;
+        this.funcionario.dataContratacao = new Date(this.funcionario.dataContratacao);
         
       });
     } 
@@ -87,6 +80,7 @@ export class CadastroPage implements OnInit {
     let loading = await this.loadingController.create({message: 'Salvando'});
 
     loading.present();
+
 
     this.funcionarioService
     .salvar(this.funcionario)
