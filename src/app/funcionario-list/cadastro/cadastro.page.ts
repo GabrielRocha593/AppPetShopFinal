@@ -15,6 +15,7 @@ export class CadastroPage implements OnInit {
 
   funcionario: Funcionario;
   funcoes: Funcao[];
+  data : string;
 
   constructor(
     private funcionarioService: FuncionarioService,
@@ -60,7 +61,19 @@ export class CadastroPage implements OnInit {
     const id = this.activatedRoute.snapshot.params['id'];  
 
     if(id) {
-      this.funcionarioService.getFuncionario(id).subscribe((funcionario) => this.funcionario = funcionario);
+      this.funcionarioService.getFuncionario(id).subscribe((funcionario) => {
+        
+        this.funcionario = funcionario;
+        
+        var data = new Date(this.funcionario.dataContratacao),
+        dia  = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0'+dia : dia,
+        mes  = (data.getMonth()+1).toString(),
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
+        this.data = anoF+"-"+mesF+"-"+diaF;
+        
+      });
     } 
   }
 

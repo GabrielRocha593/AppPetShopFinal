@@ -21,6 +21,7 @@ export class CadastroPage implements OnInit {
   funcionarios: Funcionario[];
   servicos:Servico[];
   pets:Pet[];
+  data: string;
   
 
   constructor(
@@ -87,7 +88,18 @@ export class CadastroPage implements OnInit {
     const id = this.activatedRoute.snapshot.params['id'];
 
     if(id) {
-      this.agendamentoService.getAgendamento(id).subscribe((agendamento) => this.agendamento = agendamento);
+      this.agendamentoService.getAgendamento(id).subscribe((agendamento) => {
+        this.agendamento = agendamento;
+
+        var data = new Date(this.agendamento.data),
+        dia  = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0'+dia : dia,
+        mes  = (data.getMonth()+1).toString(),
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
+        this.data = anoF+"-"+mesF+"-"+diaF;
+
+      });
     } 
   }
 
